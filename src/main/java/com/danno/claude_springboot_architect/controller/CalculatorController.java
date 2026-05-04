@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/calculate")
 public class CalculatorController {
-    
+
     private final CalculatorService calculatorService;
 
     public CalculatorController(CalculatorService calculatorService) {
@@ -20,7 +21,7 @@ public class CalculatorController {
     }
 
     @PostMapping
-    public OperationResult calculate(@RequestBody OperationRequest request) {
+    public OperationResult calculate(@Valid @RequestBody OperationRequest request) {
         double result = calculatorService.calculate(
                 request.getA(),
                 request.getB(),

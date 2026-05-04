@@ -1,9 +1,13 @@
 package com.danno.claude_springboot_architect.model;
 
+import jakarta.validation.constraints.NotNull;
+
 public class OperationRequest {
-    
+
     private int a;
     private int b;
+
+    @NotNull(message = "operation must not be null")
     private OperationType operation;
 
     // Constructors
