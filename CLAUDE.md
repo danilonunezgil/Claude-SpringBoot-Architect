@@ -55,9 +55,9 @@ On Windows use `mvnw.cmd` instead of `./mvnw`.
 
 Spring Boot 4.0.6, Java 17, Maven. Base package: `com.danno.claude_springboot_architect`.
 
-Standard three-layer structure — currently scaffolded but empty:
-- `controller/` — HTTP request handling
-- `service/` — business logic
-- `model/` — domain objects
+Standard three-layer structure:
+- `controller/` — HTTP request handling (`CalculatorController` → `POST /api/calculate`)
+- `service/` — business logic (`CalculatorService` handles ADD, SUBTRACT, MULTIPLY, DIVIDE)
+- `model/` — domain objects (`OperationRequest`, `OperationResult`, `OperationType` enum)
 
-Only the Spring Boot entry point and a context-load smoke test exist today; all layers are ready to be filled in.
+The calculator feature is the first implemented slice of this demo. `OperationRequest` uses plain getters/setters (no Lombok). Division-by-zero throws `IllegalArgumentException` — no global exception handler exists yet.
